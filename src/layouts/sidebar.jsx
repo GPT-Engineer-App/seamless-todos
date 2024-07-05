@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Inbox, Calendar, Clock } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -37,17 +38,34 @@ const Sidebar = () => (
       <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
         <NavLink to="/" className="flex items-center gap-2 font-semibold">
           <Package2 className="h-6 w-6" />
-          <span>Acme Inc</span>
+          <span>TodoMaster</span>
         </NavLink>
       </div>
       <div className="flex-1">
         <nav className="grid items-start px-2 text-sm font-medium lg:px-4 gap-2">
-          {navItems.map((item) => (
-            <SidebarNavLink key={item.to} to={item.to}>
-              {item.icon}
-              {item.title}
-            </SidebarNavLink>
-          ))}
+          <SidebarNavLink to="/inbox">
+            <Inbox className="h-4 w-4" />
+            Inbox
+          </SidebarNavLink>
+          <SidebarNavLink to="/today">
+            <Calendar className="h-4 w-4" />
+            Today
+          </SidebarNavLink>
+          <SidebarNavLink to="/upcoming">
+            <Clock className="h-4 w-4" />
+            Upcoming
+          </SidebarNavLink>
+          <div className="mt-4">
+            <h2 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+              Projects
+            </h2>
+            <div className="mt-2 space-y-1">
+              {/* Render project links here */}
+              <Button variant="outline" size="sm" className="w-full">
+                + New Project
+              </Button>
+            </div>
+          </div>
         </nav>
       </div>
     </div>
